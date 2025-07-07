@@ -4,6 +4,7 @@ import com.gnohnoey.edu_system.model.Student;
 import com.gnohnoey.edu_system.model.Teacher;
 import com.gnohnoey.edu_system.repository.StudentRepository;
 import com.gnohnoey.edu_system.repository.TeacherRepository;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,18 @@ import java.util.List;
 public class StudentController {
     private final StudentRepository studentRepository;
     private final TeacherRepository teacherRepository; //선생님 데이터도 가져와야 되니까 TeacherRepository도 선언
+
+    //환경변수 확인용
+    @PostConstruct
+    public void printEnv() {
+        System.out.println("=== ENVIRONMENT CHECK ===");
+        System.out.println("DB_HOST = " + System.getenv("DB_HOST"));
+        System.out.println("DB_PORT = " + System.getenv("DB_PORT"));
+        System.out.println("DB_NAME = " + System.getenv("DB_NAME"));
+        System.out.println("DB_USERNAME = " + System.getenv("DB_USERNAME"));
+        System.out.println("DB_PASSWORD = " + System.getenv("DB_PASSWORD"));
+        System.out.println("==========================");
+    }
 
     @GetMapping
     public String list(Model model){
