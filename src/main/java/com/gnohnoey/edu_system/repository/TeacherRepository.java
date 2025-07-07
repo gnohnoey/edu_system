@@ -38,9 +38,20 @@ public class TeacherRepository {
         );
     }
 
+    //U
     public int update(Teacher teacher){
         return jdbcTemplate.update(
                 "UPDATE teacher SET name = ? WHERE id = ?", teacher.getName(), teacher.getId()
         );
     }
+
+    //D
+    public int deleteId(int id){
+        return jdbcTemplate.update(
+                "DELETE FROM teacher WHERE id = ?", id //id가 유니크한 값이기 때문에 생성과 삭제가 쉽고 효율적임. 그래서 id를 통해 삭제하는 것!
+        );
+    }
+
+    //jdbcTemplate에서 update가 반환하는 것은 db에서 처리된 데이터 행
+
 }

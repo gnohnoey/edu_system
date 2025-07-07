@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>🧑‍🏫 교사 목록</title>
-  <link rel="stylesheet" th:href="@{/styles.css}">
+  <link rel="stylesheet" th:href="@{/styles.css}"/>
 </head>
 <body>
 <h1>🧑‍🏫 교사 목록</h1>
@@ -25,6 +25,12 @@
   <tr>
     <td th:text="${teacher.id}"></td>
     <td th:text="${teacher.name}"></td>
+    <td>
+      <a th:href="@{'teachers/edit/' + ${teacher.id}}">수정</a>
+      <form th:action="@{'/teachers/delete/' + ${teacher.id}}" method="post" style="display:inline;">
+        <button type="submit">삭제</button>
+      </form>
+    </td>
   </tr>
   </tbody>
 

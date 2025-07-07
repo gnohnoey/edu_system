@@ -48,4 +48,22 @@ public class TeacherController {
 
         return "redirect:/teachers";
     }
+
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable int id) {
+        try {
+            int affected = teacherRepository.deleteId(id);
+
+            if (affected == 0) {
+                System.out.println("해당 교사를 찾을 수 없습니다.");
+            }
+        } catch (Exception e) {
+//            model.addAttribute("error", "너 에러 발생:" + e.getMessage());
+            System.out.println(e.getMessage());
+        }
+
+        return "redirect:/teachers";
+    }
 }
+
+//@PathVariable == 주소값을 통해서 id 가져오기 (다른 방법으로는 HTML에서 input 태그에 타임리프 활용)
