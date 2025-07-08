@@ -41,7 +41,7 @@ public class StudentController {
     @GetMapping("/add")
     public String addForm(Model model){
         List<Teacher> teachers = teacherRepository.findAll();
-        model.addAttribute("students", new Student());
+        model.addAttribute("student", new Student());
         model.addAttribute("teachers", teachers);
 
         return "student-form";
