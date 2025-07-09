@@ -51,7 +51,7 @@ public class StudentRepository {
     //U
     public int update(Student student){
         return jdbcTemplate.update(
-                "UPDATE student SET name = ?, score = ?, teacher_id = ?, teacher_name = ?",
+                "UPDATE student SET name = ?, score = ?, teacher_id = ?, teacher_name = ? WHERE id = ?",
                 student.getName(), student.getScore(), student.getTeacherId(), student.getTeacherName()
         );
     }
