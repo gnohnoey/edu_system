@@ -2,18 +2,18 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${student.id} == null ? '➕ 학생 등록' : '✏️ 학생 수정'"></title>
+    <title th:text="${student != null and student.id != null} ? '✏️ 학생 수정' : '➕ 학생 등록'"></title>
     <link rel="stylesheet" th:href="@{/styles.css}"/>
 </head>
 <body>
-<h1 th:text="${student.id} == null ? '➕ 학생 등록' : '✏️ 학생 수정'"></h1>
+<h1 th:text="${student != null and student.id != null} ? '✏️ 학생 수정' : '➕ 학생 등록'"></h1>
 
 <p>
     <a href="/">🏠 홈으로</a>
     <a href="/students">👥 학생 목록</a>
 </p>
 
-<form th:action="${student.id} == null ? @{/students/add} : @{/students/edit}" th:object="${student}" method="post">
+<form th:action="${student != null and student.id != null} ? @{/students/edit} : @{/students/add}" th:object="${student}" method="post">
     <input type="hidden" th:field="*{id}">
     <p><label>이름: <input type="text" th:field="*{name}" required/></label></p>
     <p><label>성적: <input type="text" th:field="*{score}" required/></label></p>
