@@ -40,6 +40,7 @@ public class StudentController {
 
     @GetMapping("/add")
     public String addForm(Model model){
+        System.out.println(">>> 학생 등록 폼 진입");
         List<Teacher> teachers = teacherRepository.findAll();
         model.addAttribute("student", new Student());
         model.addAttribute("teachers", teachers);
